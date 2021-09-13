@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuth } from '../../contexts/AuthContext'
+import { useAuth } from '../../contexts/ContextProvider'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';

@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
-import {AuthProvider} from "./contexts/AuthContext"
+import {AuthProvider} from "./contexts/ContextProvider"
 import MainMenu from './components/MainMenu';
 import ScreenCalibration from './components/ScreenCalibration';
 import FingerCalibrationMainMenu  from './components/FingerCalibration/FingerCalibrationMainMenu';

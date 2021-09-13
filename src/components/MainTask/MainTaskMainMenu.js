@@ -1,11 +1,13 @@
 import React from 'react'
-import { useAuth } from '../../contexts/AuthContext'
+import { useAuth } from '../../contexts/ContextProvider'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+import { useHistory } from 'react-router';
 
 function MainTaskMainMenu() {
+    const history = useHistory()
     const {username, setUsername} = useAuth();
     const {age, setAge} = useAuth();
     const {targetButtonRadius, setTargetButtonRadius} = useAuth();
@@ -61,7 +63,7 @@ function MainTaskMainMenu() {
             </FormControl>
         </div>
         <div className="copy-button-wrapper">copy from last experiment</div>
-        <div className="start-button-wrapper">start</div>
+        <div className="start-button-wrapper" onClick={() => history.push("/main-task-activity")}>start</div>
     </div>)
 }
 
