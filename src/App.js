@@ -7,6 +7,7 @@ import FingerCalibrationMainMenu  from './components/FingerCalibration/FingerCal
 import FingerCalibrationActivity  from './components/FingerCalibration/FingerCalibrationActivity';
 import MainTaskMainMenu from './components/MainTask/MainTaskMainMenu';
 import MainTaskActivity from './components/MainTask/MainTaskActivity'
+import EndGameTemplate from './components/Templates/EndGameTemplate';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/main-task-activity" component={MainTaskActivity}/>
           <Route path="/finger-calibration" component={FingerCalibrationMainMenu}/>
           <Route path="/finger-calibration-activity" component={FingerCalibrationActivity}/>
+          <Route path="/end-game" component={EndGameTemplate}/>
         </Router>
       </AuthProvider>
     </>

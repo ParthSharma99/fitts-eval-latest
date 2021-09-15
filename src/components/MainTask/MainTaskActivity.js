@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ActivityTemplate from '../ActivityTemplate';
+import ActivityTemplate from '../Templates/ActivityTemplate';
 import PointGenerator from '../PointGenerator';
 
 

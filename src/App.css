@@ -98,9 +98,15 @@ body {
   display: flex;
   justify-content: end;
   align-items: center;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 #canvas {
   position: relative;
+}
+#activity-wrapper {
+  height: 100vh;
 }
 /* ----------------------------- */
 
@@ -108,7 +114,76 @@ body {
 .point-wrapper {
   background-color: black;
   border-radius: 50%;
-  position: absolute;
+  position: fixed;
 }
 
+/* ----------------------------- */
+
+/* End Game */
+.end-game-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+}
+.task-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+
+.score-container {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 56px;
+  color: #000000;
+  text-align: center;
+}
+
+.average-score-container {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+  text-align: center;
+}
+.average-score-wrapper {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 42px;
+  color: #000000;
+}
+
+.download-data-button {
+  min-width: 346px;
+  height: 65px;
+  background: #323232;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.delete-data-button {
+  min-width: 346px;
+  height: 65px;
+  background: #ff6363;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
 /* ----------------------------- */
