@@ -3,9 +3,11 @@ import PropTypes from 'prop-types'
 import trash from "../../images/trash.svg"
 import checkSquare from "../../images/checkSquare.svg"
 import { useAuth } from '../../contexts/ContextProvider'
+import { useHistory } from 'react-router'
 
 function EndGameTemplate({taskTitle, playerScore, totalScore, averageTime, downloadData, avgWindow}) {
     const {username, age, targetButtonRadius,fingerRadioSelection, distanceRadius } = useAuth()
+    const history = useHistory()
 
     function convertToCSV(objArray) {
         var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
@@ -41,6 +43,7 @@ function EndGameTemplate({taskTitle, playerScore, totalScore, averageTime, downl
     }
     const deleteClick = () =>{
         console.log("Delete Data")
+        history.push("/")
     }
 
     return (

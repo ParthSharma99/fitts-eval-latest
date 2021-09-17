@@ -15,6 +15,7 @@ export function AuthProvider({ children }) {
   const maxScore = 15;
   const canvasMargin = 16;
   const canvasPadding = 8;
+  const minDistance = 50;
   const [loading, setLoading] = useState(false)
   const [username, setUsername] = useState("")
   const [age, setAge] = useState(0)
@@ -35,9 +36,10 @@ export function AuthProvider({ children }) {
     const [xranges, yranges] = getCanvasCoordinates();
     let x = (Math.random() * (xranges[1] - xranges[0]) )+ xranges[0];
     let y = (Math.random() * (yranges[1] - yranges[0]) )+ yranges[0];
-    if(prevPoint){
+    if(prevPoint != undefined){
       let limiter = 40;
-      while(getDistance(prevPoint[0], prevPoint[1], x, y) && limiter>0){
+      while(getDistance(prevPoint[0], prevPoint[1], x, y) < minDistance + targetButtonRadius && limiter>0){
+        console.log("Here")
         x = (Math.random() * (xranges[1] - xranges[0]) )+ xranges[0];
         y = (Math.random() * (yranges[1] - yranges[0]) )+ yranges[0];
         limiter--;
