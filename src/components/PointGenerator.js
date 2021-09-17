@@ -7,8 +7,8 @@ function PointGenerator({posX, posY, radius, color, clickFunction}) {
     const pointStyle = {
       width: targetButtonRadius*2 + "px",
       height: targetButtonRadius*2 + "px",
-      left: (posX ) + "px",  
-      bottom: (posY ) + "px"
+      left: (posX) + "px",  
+      top: (posY) + "px"
     };
     return (
       <div className="point-wrapper" style={pointStyle} onMouseDown={clickFunction}/>

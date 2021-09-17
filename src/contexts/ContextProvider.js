@@ -27,14 +27,22 @@ export function AuthProvider({ children }) {
   //#region Randomisation Functions
   const getCanvasCoordinates= () => {
     const xranges = [canvasMargin + canvasPadding,  width - (canvasMargin + canvasPadding + 2*targetButtonRadius)];
-    const yranges = [canvasMargin + canvasPadding,  height - (canvasMargin + canvasPadding + 2*targetButtonRadius + scoreBoardBorderWidth + scoreBoardHeight)];
+    const yranges = [canvasMargin + canvasPadding + scoreBoardHeight + scoreBoardBorderWidth,  height - (canvasMargin + canvasPadding + 2*targetButtonRadius + scoreBoardBorderWidth + scoreBoardHeight)];
     return [xranges, yranges];
   }
   
-  const RandomPoint = () => {
+  const RandomPoint = (prevPoint) => {
     const [xranges, yranges] = getCanvasCoordinates();
     let x = (Math.random() * (xranges[1] - xranges[0]) )+ xranges[0];
     let y = (Math.random() * (yranges[1] - yranges[0]) )+ yranges[0];
+    if(prevPoint){
+      let limiter = 40;
+      while(getDistance(prevPoint[0], prevPoint[1], x, y) && limiter>0){
+        x = (Math.random() * (xranges[1] - xranges[0]) )+ xranges[0];
+        y = (Math.random() * (yranges[1] - yranges[0]) )+ yranges[0];
+        limiter--;
+      }
+    }
     return [x,y];
   }
   
@@ -44,9 +52,18 @@ export function AuthProvider({ children }) {
       return RandomPoint();
     }
     
+
+    
   }
   //#endregion
 
+  //#region Useful Functions
+  const getDistance = (aX, aY, bX, bY) => {
+    let dx = Math.abs(aX - bX)
+    let dy = Math.abs(aY - bY)
+    return Math.sqrt( (dx*dx) + (dy*dy))
+  }
+  //#endregion
 
   const value = {
     scoreBoardHeight,
@@ -59,6 +76,7 @@ export function AuthProvider({ children }) {
     targetButtonRadius,
     distanceRadius,
     fingerRadioSelection,
+    getDistance,
     setLoading,
     setUsername,
     setAge,
