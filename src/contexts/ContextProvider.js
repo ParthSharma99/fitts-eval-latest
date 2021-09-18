@@ -133,13 +133,14 @@ export function AuthProvider({ children }) {
         y = ((Math.sin(angle * Math.PI / 180))* distanceRadius) + prevPoint[1];
         limiter--;
       }
+      if(limiter == 0)  return [-1,-1];
       console.log(Math.fround(getDistance(x,y,prevPoint[0], prevPoint[1]))  == distanceRadius)
       return [x,y];
       //#endregion
 
     }else{
       console.log("prevPoint Not found")
-      return RandomPoint();
+      return [-1,-1];
     }
   }
   //#endregion

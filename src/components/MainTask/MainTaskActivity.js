@@ -60,7 +60,9 @@ function MainTaskActivity() {
         event.cancelBubble = true;
         if(event.stopPropagation) event.stopPropagation();
         if(gameOver) return;
-
+        if(document.getElementById("point1").style.display != "none"){
+            return
+        }
         const duration = event.timeStamp - prevTimestamp
         setAverageTime(averageTime + duration)
         //#region Change Color
@@ -91,6 +93,12 @@ function MainTaskActivity() {
             addData(duration, true, event)
             let point1 = RandomPoint()
             let point2 = RandomPointAtDistance(point1)
+            let limiter = 50;
+            while(point2[0] == -1 && limiter > 0){
+                point1 = RandomPoint()
+                point2 = RandomPointAtDistance(point1)
+                limiter--;
+            }
             setPos1X(point1[0])
             setPos1Y(point1[1])
             setPos2X(point2[0])
