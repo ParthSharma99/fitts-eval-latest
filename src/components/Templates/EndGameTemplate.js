@@ -8,7 +8,7 @@ import { useHistory } from 'react-router'
 function EndGameTemplate({taskTitle, playerScore, totalScore, averageTime, downloadData, avgWindow}) {
     const {username, age, targetButtonRadius,fingerRadioSelection, distanceRadius } = useAuth()
     const history = useHistory()
-
+    console.log(averageTime)
     function convertToCSV(objArray) {
         var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
         var str = Object.keys(array[0]).join(',');
@@ -58,7 +58,7 @@ function EndGameTemplate({taskTitle, playerScore, totalScore, averageTime, downl
                 ? 
                 <div className="average-score-container">
                     <div className="average-score-title-wrapper">average time per trial</div> 
-                    <div className="average-score-wrapper">{averageTime} sec</div> 
+                    <div className="average-score-wrapper">{averageTime.toFixed(3)} sec</div> 
                 </div>
                 :""
             }

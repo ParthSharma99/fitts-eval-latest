@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useAuth } from '../../contexts/ContextProvider';
 
 
 function ActivityTemplate({currScore, totalScore, children, handleClick}) {
-    const {canvasMargin, canvasPadding, scoreBoardHeight,scoreBoardBorderWidth} = useAuth()
+    const {canvasMargin, canvasPadding, scoreBoardHeight,scoreBoardBorderWidth, saveData} = useAuth()
     const exceptCanvasHeight = scoreBoardHeight + (2 * (canvasMargin + canvasPadding)) + scoreBoardBorderWidth;
+
+    useEffect(() => saveData(), [])
+    
     return (
         <div id="activity-wrapper">
             <div className="score-board" style={{borderBottom:scoreBoardBorderWidth + "px solid black"}}>

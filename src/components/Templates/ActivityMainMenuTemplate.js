@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 
 function ActivityMainMenuTemplate({nextTaskPath, inputFieldsData}) {
     const history = useHistory()
-    const {setFingerRadioSelection} = useAuth();
+    const {setFingerRadioSelection, copyFromLastSaved, fingerRadioSelection} = useAuth();
     return (
     <div className="details-menu-wrapper">
         {
@@ -22,7 +22,7 @@ function ActivityMainMenuTemplate({nextTaskPath, inputFieldsData}) {
         }
         <div className="radio-button-wrapper">
             <FormControl component="fieldset">
-                <RadioGroup row aria-label="position" name="position" defaultValue="NT" onChange={(e) => setFingerRadioSelection(e.target.value)}>
+                <RadioGroup row aria-label="position" name="position" defaultValue={fingerRadioSelection} onChange={(e) => setFingerRadioSelection(e.target.value)}>
                     <FormControlLabel
                     value="NT"
                     control={<Radio color="primary" />}
@@ -51,7 +51,7 @@ function ActivityMainMenuTemplate({nextTaskPath, inputFieldsData}) {
                 </RadioGroup>
             </FormControl>
         </div>
-        <div className="copy-button-wrapper">copy from last experiment</div>
+        <div className="copy-button-wrapper" onClick={() => copyFromLastSaved()}>copy from last experiment</div>
         <div className="start-button-wrapper" onClick={() => history.push(nextTaskPath)}>start</div>
     </div>)
 }
