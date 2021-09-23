@@ -8,7 +8,7 @@ import EndGameTemplate from '../Templates/EndGameTemplate';
 function MainTaskActivity() {
     const [currScore, setCurrScore] = useState(0);
     const [totalScore, setTotalScore] = useState(0);
-    const {RandomPoint, maxScore, getDistance, RandomPointAtDistance} = useAuth()
+    const {RandomPoint, maxScore, getDistance, RandomPointAtDistance, targetButtonRadius} = useAuth()
     const currentPoint1 = RandomPoint()
     const currentPoint2 = RandomPointAtDistance(currentPoint1)
     const [pos1X, setPos1X] = useState(currentPoint1[0])
@@ -25,12 +25,12 @@ function MainTaskActivity() {
         //#region Add Data to store current Progress
         let tempData = {
             'TrialNo': totalScore+1,
-            'start_target_x':pos1X,
-            'start_target_y':pos1Y,
+            'start_target_x':pos1X + targetButtonRadius,
+            'start_target_y':pos1Y +  targetButtonRadius,
             'start_touch_x':touch1[0],
             'start_touch_y':touch1[1],
-            'end_target_x': pos2X,
-            'end_target_y':pos2Y,
+            'end_target_x': pos2X + targetButtonRadius,
+            'end_target_y':pos2Y + targetButtonRadius,
             'end_touch_x':finalTouchEvent.clientX * 1.0,
             'end_touch_y':finalTouchEvent.clientY * 1.0,
             'hit': hitVal,

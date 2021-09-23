@@ -7,7 +7,7 @@ import EndGameTemplate from '../Templates/EndGameTemplate';
 function FingerCalibrationActivity() {
     const [currScore, setCurrScore] = useState(0);
     const [totalScore, setTotalScore] = useState(0);
-    const {RandomPoint, maxScore, getDistance} = useAuth()
+    const {RandomPoint, maxScore, getDistance, targetButtonRadius} = useAuth()
     const currentPoint = RandomPoint()
     const [posX, setPosX] = useState(currentPoint[0])
     const [posY, setPosY] = useState(currentPoint[1])
@@ -19,8 +19,8 @@ function FingerCalibrationActivity() {
         const dist = getDistance(posX, posY, event.clientX, event.clientY)
         let tempData = {
             'TrialNo': totalScore+1,
-            'target_x': posX,
-            'target_y': posY,
+            'target_x': posX + targetButtonRadius,
+            'target_y': posY + targetButtonRadius,
             'touch_x': event.clientX,
             'touch_y': event.clientY,
             'hit': hitVal,
